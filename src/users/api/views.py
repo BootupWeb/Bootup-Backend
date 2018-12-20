@@ -1,7 +1,7 @@
-from rest_frameworks.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from users.models import Credentials
-from .sereializers import CredentialsSerializer
+from .serializers import CredentialsSerializer
 
 
 class CredentialListView(ListAPIView):
