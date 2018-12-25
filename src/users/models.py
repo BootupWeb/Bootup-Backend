@@ -1,17 +1,16 @@
 from django.db import models
 
-class Credentials(models.Model):
-    username = models.CharField(max_length=22),
-    password = models.CharField(max_length=22),
-    email = models.EmailField(max_length=100),
+class Credential(models.Model):
+    username = models.CharField(max_length=22)
+    password = models.CharField(max_length=22)
+    email = models.EmailField(max_length=100)
     token = models.CharField(max_length=225)
 
     def __str__(self):
         return self.username
 
-
-class Profiles(models.Model):
-    user = models.ForeignKey(Credentials, on_delete=models.CASCADE)
+class Profile(models.Model):
+    user = models.ForeignKey(Credential, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=22)
     last_name = models.CharField(max_length=22)
     gender = models.SmallIntegerField(default='') # 1=Male, 2=Female, 3=Other
@@ -24,10 +23,10 @@ class Profiles(models.Model):
     website = models.URLField(max_length=200)
 
     def __str__(self):
-        return self.username
+        return self.user
 
-class Roles(models.Model):
-    user = models.ForeignKey(Credentials, on_delete=models.CASCADE)
+class Role(models.Model):
+    user = models.ForeignKey(Credential, on_delete=models.CASCADE)
     type = models.CharField(max_length=9)
     company = models.CharField(max_length=50)
     position = models.CharField(max_length=30)
@@ -38,4 +37,4 @@ class Roles(models.Model):
     verified = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.type
+        return self.user
