@@ -23,7 +23,7 @@ class Profile(models.Model):
     website = models.URLField(max_length=200)
 
     def __str__(self):
-        return self.user
+        return self.first_name
 
 class Role(models.Model):
     user = models.ForeignKey(Credential, on_delete=models.CASCADE)
@@ -37,4 +37,4 @@ class Role(models.Model):
     verified = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user
+        return self.type
