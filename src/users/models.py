@@ -44,3 +44,19 @@ class Founder(models.Model):
 
     def __str__(self):
         return self.user.username + '-' + self.campaign.name
+
+class Investory(models.Model):
+    user = models.ForeignKey(Credential, on_delete=models.CASCADE)
+    company = models.CharField(max_length=32)
+    position = models.CharField(max_length=22)
+    since_year = models.IntegerField()
+    since_month = models.IntegerField()
+    summary = models.TextField()
+    top_investment = models.CharField(max_length=22)
+    current_investments = models.IntegerField()
+    portfolio_link = models.URLField()
+    portfolio_file = models.URLField()
+    verified = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.user.username + ' - ' + self.position
