@@ -1,5 +1,9 @@
 from django.db import models
 
+from campaign.models import Detail
+
+from .choices import MONTH_CHOICES, ROLE_CHOICES
+
 class Credential(models.Model):
     username = models.CharField(max_length=22)
     password = models.CharField(max_length=22)
@@ -25,16 +29,18 @@ class Profile(models.Model):
     def __str__(self):
         return self.first_name
 
-class Role(models.Model):
+class Founder(models.Model):
     user = models.ForeignKey(Credential, on_delete=models.CASCADE)
-    type = models.CharField(max_length=9)
+    campaign = models.ForeignKey(Detail, on_delete=models.CASCADE)
     company = models.CharField(max_length=50)
     position = models.CharField(max_length=30)
     commitment = models.TextField(null=True)
-    since_month = models.IntegerField()
+    since_month = models.CharField(max_length=15, choices=MONTH_CHOICES)
     since_year = models.IntegerField()
     portfolio = models.CharField(max_length=200)
+    relation = models.TextField()
+    known = models.IntegerField()
     verified = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.type
+        return self.user.username + '-' + self.campaign.name

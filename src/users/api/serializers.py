@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from users.models import Credential, Profile, Role
+from users.models import Credential, Profile, Founder
 
 class CredentialSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,7 +12,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ('user', 'first_name', 'last_name', 'gender', 'phone', 'city', 'state', 'day', 'month', 'year', 'website')
 
-class RoleSerializer(serializers.ModelSerializer):
+class FounderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Role
-        fields = ('user', 'type', 'company', 'position', 'commitment', 'since_month', 'since_year', 'portfolio', 'verified')
+        model = Founder
+        fields = ('user', 'campaign', 'company', 'position', 'commitment', 'since_month', 'since_year', 'portfolio', 'verified')
