@@ -43,3 +43,11 @@ class Story(models.Model):
 
     def __str__(self):
         return self.details.name + ' - ' + self.slug
+
+class Update(models.Model):
+    campaign = models.ForeignKey(Detail, on_delete=models.CASCADE)
+    message = models.TextField()
+    impact = models.TextField()
+
+    def __str__(self):
+        return self.campaign.name + ' update'
