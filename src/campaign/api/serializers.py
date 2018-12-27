@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from campaign.models import Detail, Story
+from campaign.models import Detail, Story, Update
 
 class DetailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,3 +12,8 @@ class StorySerializer(serializers.ModelSerializer):
         model = Story
         fields = ('details', 'slug', 'product', 'summary', 'pick_project', 'far_along', 'competitors', 'different', 'new', 'money_use', 'user_aquisition',
                   'monetization', 'user_count', 'equity_summary', 'future_six', 'future_one', 'future_two', 'future_three', 'other_projects')
+
+class UpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Update
+        fields = ('campaign', 'message', 'impact')
