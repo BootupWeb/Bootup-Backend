@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-from users.models import Credential, Profile, Founder
-from .serializers import CredentialSerializer, ProfileSerializer, FounderSerializer
+from users.models import Credential, Profile, Founder, Investor
+from .serializers import CredentialSerializer, ProfileSerializer, FounderSerializer, InvestorSerializer
 
 class CredentialListView(ListAPIView):
     queryset = Credential.objects.all()
@@ -28,3 +28,11 @@ class FounderListView(ListAPIView):
 class FounderDetailsView(RetrieveAPIView):
     queryset = Founder.objects.all()
     serializer_class = FounderSerializer
+
+class InvestorListView(ListAPIView):
+    queryset = Investor.objects.all()
+    serializer_class = InvestorSerializer
+
+class InvestorDetailsView(RetrieveAPIView):
+    queryset = Investor.objects.all()
+    serializer_class = InvestorSerializer
