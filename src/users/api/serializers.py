@@ -17,7 +17,7 @@ class FounderSerializer(serializers.ModelSerializer):
         model = Founder
         fields = ('user', 'campaign', 'company', 'position', 'commitment', 'since_month', 'since_year', 'portfolio', 'verified')
 
-class InvestorySerializer(serializers.ModelSerializer):
+class InvestorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Investor
         fields = ('user', 'company', 'position', 'since_month', 'since_year', 'summary', 'top_investment', 'current_investments', 'portfolio_link', 'portfolio_file', 'verified')
