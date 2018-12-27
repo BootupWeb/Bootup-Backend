@@ -45,7 +45,7 @@ class Founder(models.Model):
     def __str__(self):
         return self.user.username + '-' + self.campaign.name
 
-class Investory(models.Model):
+class Investor(models.Model):
     user = models.ForeignKey(Credential, on_delete=models.CASCADE)
     company = models.CharField(max_length=32)
     position = models.CharField(max_length=22)
