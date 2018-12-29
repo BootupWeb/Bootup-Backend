@@ -4,9 +4,9 @@ from chat.models import Chat
 from .serializers import ChatSerializer
 
 class ChatListView(ListAPIView):
-    queryset = Chat.object.all()
+    queryset = Chat.objects.all()
     serializer_class = ChatSerializer
 
 class ChatDetailsView(RetrieveAPIView):
-    queryset = Chat.object.all()
-    serializer_class = ChatDetailsView
+    queryset = Chat.objects.all()
+    serializer_class = ChatSerializer
