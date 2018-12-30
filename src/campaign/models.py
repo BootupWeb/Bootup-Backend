@@ -16,8 +16,8 @@ class Detail(models.Model):
     phone = models.CharField(max_length=13)
     progress = models.CharField(max_length=22, choices=PROGRESS_CHOICES)
     status = models.CharField(max_length=22, choices=SIZE_CHOICES)
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
@@ -42,8 +42,8 @@ class Story(models.Model):
     future_two = models.TextField()
     future_three = models.TextField()
     other_projects = models.TextField()
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.details.name + ' - ' + self.slug
@@ -52,8 +52,8 @@ class Update(models.Model):
     campaign = models.ForeignKey(Detail, on_delete=models.CASCADE)
     message = models.TextField()
     impact = models.TextField()
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.campaign.name + ' update'

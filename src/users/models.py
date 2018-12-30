@@ -27,8 +27,8 @@ class Profile(models.Model):
     month = models.SmallIntegerField(choices=MONTH_CHOICES, default="January")
     year = models.SmallIntegerField(default='1920')
     website = models.URLField(max_length=200)
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.first_name
@@ -45,8 +45,8 @@ class Founder(models.Model):
     relation = models.TextField()
     known = models.IntegerField()
     verified = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.username + '-' + self.campaign.name
@@ -63,8 +63,8 @@ class Investor(models.Model):
     portfolio_link = models.URLField()
     portfolio_file = models.URLField()
     verified = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
+    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.username + ' - ' + self.position
