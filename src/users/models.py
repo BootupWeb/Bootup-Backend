@@ -2,7 +2,7 @@ from django.db import models
 
 from campaign.models import Detail
 
-from .choices import MONTH_CHOICES, ROLE_CHOICES
+from .choices import MONTH_CHOICES, ROLE_CHOICES, GENDER_CHOICES
 
 class Credential(models.Model):
     username = models.CharField(max_length=22)
@@ -19,7 +19,7 @@ class Profile(models.Model):
     user = models.ForeignKey(Credential, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=22)
     last_name = models.CharField(max_length=22)
-    gender = models.SmallIntegerField(default='') # 1=Male, 2=Female, 3=Other
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES) # 1=Male, 2=Female, 3=Other
     phone = models.CharField(max_length=13, default='000-000-0000')
     city = models.CharField(max_length=22)
     state = models.CharField(max_length=4)

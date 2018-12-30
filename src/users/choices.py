@@ -33,3 +33,15 @@ ROLE_CHOICES = (
     (INVESTOR, 'Investor'),
     (FOUNDER, 'Founder')
 )
+
+MALE = 'Male'
+FEMALE = 'Female'
+OTHER = 'Other'
+NOT_SPEC = 'Not Specified'
+
+GENDER_CHOICES = (
+    (MALE, 'Male'),
+    (FEMALE, 'Female'),
+    (OTHER, 'Other'),
+    (NOT_SPEC, 'Not Specified')
+)
