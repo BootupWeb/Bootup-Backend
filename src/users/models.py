@@ -9,6 +9,8 @@ class Credential(models.Model):
     password = models.CharField(max_length=22)
     email = models.EmailField(max_length=100)
     token = models.CharField(max_length=225)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.username
@@ -25,6 +27,8 @@ class Profile(models.Model):
     month = models.SmallIntegerField(default='01')
     year = models.SmallIntegerField(default='1920')
     website = models.URLField(max_length=200)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.first_name
@@ -41,6 +45,8 @@ class Founder(models.Model):
     relation = models.TextField()
     known = models.IntegerField()
     verified = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user.username + '-' + self.campaign.name
@@ -57,6 +63,8 @@ class Investor(models.Model):
     portfolio_link = models.URLField()
     portfolio_file = models.URLField()
     verified = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.user.username + ' - ' + self.position
