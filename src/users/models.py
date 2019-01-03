@@ -24,7 +24,7 @@ class Profile(models.Model):
     city = models.CharField(max_length=22)
     state = models.CharField(max_length=4)
     day = models.SmallIntegerField(default='01')
-    month = models.SmallIntegerField(choices=MONTH_CHOICES, default="January")
+    month = models.CharField(max_length=22, choices=MONTH_CHOICES, default="January")
     year = models.SmallIntegerField(default='1920')
     website = models.URLField(max_length=200)
     created = models.DateTimeField(auto_now=True)
