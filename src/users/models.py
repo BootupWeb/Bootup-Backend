@@ -17,7 +17,6 @@ class Profile(models.Model):
     website = models.URLField(max_length=200)
     type = models.CharField(max_length=2, default='F')
     created = models.DateTimeField(auto_now=True)
-    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.username  + ' - ' + self.type
@@ -34,7 +33,7 @@ class Role(models.Model):
     portfolio_url = models.URLField()
     current_inv = models.IntegerField()
     top_inv = models.CharField(max_length=44)
-    varified = models.BooleanField(default=False)
+    verified = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username + ' - ' + self.position

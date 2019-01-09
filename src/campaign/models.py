@@ -4,7 +4,7 @@ from .choices import CATEGORY_CHOICES, PLATFORM_CHOICES, PROGRESS_CHOICES, SIZE_
 
 class Detail(models.Model):
     name = models.CharField(max_length=32)
-    slug = models.CharField(max_length=225)
+    slug = models.CharField(max_length=225, default="describe product in 225 characters")
     category = models.CharField(max_length=32, choices=CATEGORY_CHOICES)
     platform = models.CharField(max_length=22, choices=PLATFORM_CHOICES)
     established = models.SmallIntegerField()
@@ -14,10 +14,10 @@ class Detail(models.Model):
     location_state = models.CharField(max_length=22)
     progress = models.CharField(max_length=22, choices=PROGRESS_CHOICES)
     status = models.CharField(max_length=22, choices=SIZE_CHOICES)
-    equity = models.DecimalField(max_digits=3, decimal_places=2)
-    amount = models.DecimalField(max_digits=15, decimal_places=2)
-    valuation = models.DecimalField(max_digits=15, decimal_places=2)
-    featured_images = models.ImageField(upload_to='featured_images/')
+    equity = models.DecimalField(max_digits=5, decimal_places=2, default=33.33)
+    amount = models.DecimalField(max_digits=17, decimal_places=2, default=1000.00)
+    valuation = models.DecimalField(max_digits=17, decimal_places=2, default=3333.33)
+    featured_images = models.ImageField(upload_to='featured_images/', default="http://via.placeholder.com/300x300")
     created = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -49,7 +49,6 @@ class Update(models.Model):
     campaign = models.ForeignKey(Detail, on_delete=models.CASCADE)
     message = models.TextField()
     created = models.DateTimeField(auto_now=True)
-    updated = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.campaign.name + ' update'
