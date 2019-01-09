@@ -25,7 +25,7 @@ class Role(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     campagin = models.ForeignKey(Detail, on_delete=models.CASCADE, null=True)
-    firm = models.CharField(max_length=44)
+    firm = models.CharField(max_length=44, null=True)
     position = models.CharField(max_length=44)
     summary = models.TextField()
     since_month = models.CharField(max_length=22, choices=MONTH_CHOICES, default='January')
