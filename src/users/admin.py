@@ -1,8 +1,6 @@
 from django.contrib import admin
 
-from .models import Credential, Profile, Founder, Investor
+from .models import Profile, Role
 
-admin.site.register(Credential)
 admin.site.register(Profile)
-admin.site.register(Founder)
-admin.site.register(Investor)
+admin.site.register(Role)

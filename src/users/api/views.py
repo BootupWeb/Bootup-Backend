@@ -1,16 +1,17 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-from users.models import Credential, Profile, Founder, Investor
-from .serializers import CredentialSerializer, ProfileSerializer, FounderSerializer, InvestorSerializer
+from django.contrib.auth.models import User
 
-class CredentialListView(ListAPIView):
-    queryset = Credential.objects.all()
-    serializer_class = CredentialSerializer
+from users.models import Profile, Role
+from .serializers import UserSerializer, ProfileSerializer, RoleSerializer
 
-class CredentialDetailsView(RetrieveAPIView):
-    queryset = Credential.objects.all()
-    serializer_class = CredentialSerializer
+class UserListView(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
+class UserDetailsView(RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 class ProfileListView(ListAPIView):
     queryset = Profile.objects.all()
@@ -20,19 +21,10 @@ class ProfileDetailsView(RetrieveAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
 
+class RoleListView(ListAPIView):
+    queryset = Role.objects.all()
+    serializer_class = RoleSerializer
 
-class FounderListView(ListAPIView):
-    queryset = Founder.objects.all()
-    serializer_class = FounderSerializer
-
-class FounderDetailsView(RetrieveAPIView):
-    queryset = Founder.objects.all()
-    serializer_class = FounderSerializer
-
-class InvestorListView(ListAPIView):
-    queryset = Investor.objects.all()
-    serializer_class = InvestorSerializer
-
-class InvestorDetailsView(RetrieveAPIView):
-    queryset = Investor.objects.all()
-    serializer_class = InvestorSerializer
+class RoleDetailsView(RetrieveAPIView):
+    queryset = Role.objects.all()
+    serializer_class = RoleSerializer
