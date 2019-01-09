@@ -1,11 +1,10 @@
 from django.db import models
 
 from campaign.models import Detail
-from users.models import Investor, Founder
 
 class Chat(models.Model):
     campaign = models.ForeignKey(Detail, on_delete=models.CASCADE)
-    investor = models.ForeignKey(Investor, on_delete=models.CASCADE)
+    # investor = models.ForeignKey(Investor, on_delete=models.CASCADE)
     subject = models.CharField(max_length=32, default='random message')
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
@@ -15,7 +14,7 @@ class Chat(models.Model):
 
 class Message(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.CASCADE)
-    founder = models.ForeignKey(Founder, on_delete=models.CASCADE)
+    # founder = models.ForeignKey(Founder, on_delete=models.CASCADE)
     message = models.TextField()
     media = models.FileField(upload_to='uploads/')
     link = models.URLField()
